@@ -38,12 +38,58 @@ if ! [ -x "$(command -v git)" ]; then
 
     "Linux")
       # Considering just Ubuntu for now
-      sudo apt-get install git-all
+      sudo apt-get install git-all curl
       ;;
   esac
 else
   echo "Git already installed - nice!"
 fi
+
+# Install Node & Yarn (volta)
+if ! [ -x "$(command -v volta)" ]; then
+  echo "Installing volta"
+
+  curl https://get.volta.sh | bash
+  volta install node
+  volta install yarn
+else
+  echo "volta already installed - nice!"
+fi
+
+# Install Ruby (rbenv)
+if ! [ -x "$(command -v rbenv)" ]; then
+  echo "Installing rbenv"
+
+  case $OS in
+    "Darwin")
+      brew install rbenv ruby-build sqlite3
+      echo 'eval "$(rbenv init - zsh)"' >> ~.zshrc
+      ;;
+
+    "Linux")
+      # Considering just Ubuntu for now
+      git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+      echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+      echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+      exec $SHELL
+
+      git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+      echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.zshrc
+      exec $SHELL
+      ;;
+  esac
+
+  echo "Installing Ruby 3.1.3"
+  rbenv install 3.1.3
+  rbenv global 3.1.3
+
+  echo "Installing Rails 7.0.4"
+  gem install rails -v 7.0.4
+  rbenv rehash
+else
+  echo "rbenv & ruby & rails already installed - nice!"
+fi
+
 
 # Install neovim
 if ! [ -x "$(command -v nvim)" ]; then
@@ -102,3 +148,10 @@ cp ./.zshrc ~/.zshrc
 
 echo "Copying .nvim folder to ~/.config/nvm"
 cp -R ./nvim ~/.config
+
+echo
+echo "--"
+echo "Close and re-open this terminal or run"
+echo "$ source ~/.zshrc"
+echo "to start configuring Powerlevel10k or run"
+echo "$ p10k configure"

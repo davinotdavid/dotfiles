@@ -9,8 +9,10 @@ The idea here is to be able to run `$ ./setup.sh` for macOS and Ubuntu. It insta
 - Homebrew (macOS only)
 - iTerm2 (macOS only)
 - Git
+- Node & Yarn (through Volta.sh)
+- Ruby & Rails (through rbenv)
 - Neovim (+ .config folder)
-- oh-my-zsh (+ .zshrc aliases and plugins)
+- oh-my-zsh (+ .zshrc aliases, plugins and theme)
     - zsh-autosuggestions
     - zsh-syntax-highlighting
-- Powerlevel10k
+    - Powerlevel10k
