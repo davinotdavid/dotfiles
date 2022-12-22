@@ -18,6 +18,9 @@ return require('packer').startup(function(use)
 	  end
   })
 
+  -- tmux split window navigation
+  use("christoomey/vim-tmux-navigator")
+
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
   use('mbbill/undotree')

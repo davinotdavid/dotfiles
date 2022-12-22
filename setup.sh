@@ -45,6 +45,27 @@ else
   echo "Git already installed - nice!"
 fi
 
+# Install tmux
+if ! [ -x "$(command -v tmux)" ]; then
+  echo "Installing tmux"
+
+  case $OS in
+    "Darwin")
+      brew install tmux
+      ;;
+
+    "Linux")
+      # Considering just Ubuntu for now
+      sudo apt-get install tmux
+      ;;
+  esac
+
+  echo "Installing tpm (tmux plugin manager)"
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  echo "tmux already installed - nice!"
+fi
+
 # Install Node & Yarn (volta)
 if ! [ -x "$(command -v volta)" ]; then
   echo "Installing volta"
