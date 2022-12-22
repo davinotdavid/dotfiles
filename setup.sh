@@ -170,6 +170,9 @@ cp ./.zshrc ~/.zshrc
 echo "Copying .nvim folder to ~/.config/nvm"
 cp -R ./nvim ~/.config
 
+echo "Copying .tmux.conf to ~/.tmux.conf"
+cp ./.tmux.conf ~/.tmux.conf
+
 echo
 echo "--"
 echo "Close and re-open this terminal or run"
