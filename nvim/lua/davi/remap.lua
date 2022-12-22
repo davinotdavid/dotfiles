@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Move blocks of text from selection
@@ -33,3 +35,6 @@ vim.keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
 vim.keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close tab
 vim.keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
 vim.keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
+
+-- nvim-tree
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer

@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- color theme
   use({
 	  'rose-pine/neovim',
 	  as = 'rose-pine',
@@ -20,6 +21,10 @@ return require('packer').startup(function(use)
 
   -- tmux split window navigation
   use("christoomey/vim-tmux-navigator")
+
+  -- file explorer
+  use("nvim-tree/nvim-tree.lua")
+  use("nvim-tree/nvim-web-devicons")
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
